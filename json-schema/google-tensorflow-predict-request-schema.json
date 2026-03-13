@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.tensorflow.org/schemas/serving/predict-request.json",
+  "title": "TensorFlow Serving Predict Request",
+  "description": "Schema for a prediction request to the TensorFlow Serving REST API, used to send input data for model inference.",
+  "type": "object",
+  "properties": {
+    "signature_name": {
+      "type": "string",
+      "description": "The TensorFlow serving signature to invoke. Defaults to 'serving_default'.",
+      "default": "serving_default"
+    },
+    "instances": {
+      "type": "array",
+      "description": "A list of input instances in row format. Each instance is an object or value matching the model's input signature.",
+      "items": {
+        "$ref": "#/$defs/InputInstance"
+      }
+    },
+    "inputs": {
+      "description": "Input tensors in columnar format. Keys are input tensor names, values are the tensor data.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/TensorValue"
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    { "required": ["instances"] },
+    { "required": ["inputs"] }
+  ],
+  "$defs": {
+    "InputInstance": {
+      "description": "A single input instance for prediction",
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string" },
+        { "type": "array", "items": {} },
+        { "type": "object", "additionalProperties": true }
+      ]
+    },
+    "TensorValue": {
+      "description": "A tensor value which can be a scalar, list, or nested list",
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string" },
+        { "type": "boolean" },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TensorValue"
+          }
+        }
+      ]
+    }
+  }
+}

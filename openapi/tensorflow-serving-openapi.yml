@@ -1,0 +1,260 @@
+openapi: 3.1.0
+info:
+  title: TensorFlow Serving REST API
+  description: >-
+    TensorFlow Serving exposes a REST API for running inference on trained
+    TensorFlow models. It supports predict, classify, and regress endpoints
+    with model versioning and lifecycle management.
+  version: '1'
+  contact:
+    name: TensorFlow Community
+    url: https://www.tensorflow.org/community
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+externalDocs:
+  description: TensorFlow Serving REST API Documentation
+  url: https://www.tensorflow.org/tfx/serving/api_rest
+servers:
+  - url: http://localhost:8501
+    description: Default TensorFlow Serving REST endpoint
+tags:
+  - name: Prediction
+    description: Model inference operations
+  - name: Model Status
+    description: Model metadata and status operations
+paths:
+  /v1/models/{model_name}:
+    get:
+      operationId: getModelStatus
+      summary: Get model status
+      description: Returns the status of a model including available versions.
+      tags:
+        - Model Status
+      parameters:
+        - $ref: '#/components/parameters/model_name'
+      responses:
+        '200':
+          description: Model status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelStatusResponse'
+        '404':
+          description: Model not found
+  /v1/models/{model_name}/metadata:
+    get:
+      operationId: getModelMetadata
+      summary: Get model metadata
+      description: >-
+        Returns metadata for a model including signature definitions that
+        describe the model's inputs and outputs.
+      tags:
+        - Model Status
+      parameters:
+        - $ref: '#/components/parameters/model_name'
+      responses:
+        '200':
+          description: Model metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMetadataResponse'
+  /v1/models/{model_name}:predict:
+    post:
+      operationId: predict
+      summary: Predict
+      description: >-
+        Runs prediction (inference) on a model. Accepts input tensors and
+        returns output tensors from the model's serving signature.
+      tags:
+        - Prediction
+      parameters:
+        - $ref: '#/components/parameters/model_name'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PredictRequest'
+      responses:
+        '200':
+          description: Prediction results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictResponse'
+        '400':
+          description: Invalid input
+        '404':
+          description: Model not found
+  /v1/models/{model_name}:classify:
+    post:
+      operationId: classify
+      summary: Classify
+      description: >-
+        Runs classification on a model. Returns class labels and scores
+        for the given input examples.
+      tags:
+        - Prediction
+      parameters:
+        - $ref: '#/components/parameters/model_name'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassifyRequest'
+      responses:
+        '200':
+          description: Classification results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassifyResponse'
+  /v1/models/{model_name}:regress:
+    post:
+      operationId: regress
+      summary: Regress
+      description: >-
+        Runs regression on a model. Returns regression values for the
+        given input examples.
+      tags:
+        - Prediction
+      parameters:
+        - $ref: '#/components/parameters/model_name'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegressRequest'
+      responses:
+        '200':
+          description: Regression results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegressResponse'
+components:
+  parameters:
+    model_name:
+      name: model_name
+      in: path
+      required: true
+      description: The name of the model
+      schema:
+        type: string
+  schemas:
+    PredictRequest:
+      type: object
+      properties:
+        signature_name:
+          type: string
+          description: The serving signature to use (defaults to serving_default)
+        instances:
+          type: array
+          description: Input instances for row-format requests
+          items: {}
+        inputs:
+          description: Input tensors for columnar-format requests
+          oneOf:
+            - type: object
+              additionalProperties: true
+            - type: array
+              items: {}
+    PredictResponse:
+      type: object
+      properties:
+        predictions:
+          type: array
+          description: Output predictions in row format
+          items: {}
+        outputs:
+          description: Output tensors in columnar format
+    ClassifyRequest:
+      type: object
+      properties:
+        signature_name:
+          type: string
+        context:
+          type: object
+          additionalProperties: true
+        examples:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    ClassifyResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              classes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    label:
+                      type: string
+                    score:
+                      type: number
+    RegressRequest:
+      type: object
+      properties:
+        signature_name:
+          type: string
+        context:
+          type: object
+          additionalProperties: true
+        examples:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    RegressResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: number
+    ModelStatusResponse:
+      type: object
+      properties:
+        model_version_status:
+          type: array
+          items:
+            type: object
+            properties:
+              version:
+                type: string
+              state:
+                type: string
+                enum: [START, LOADING, AVAILABLE, UNLOADING, END]
+              status:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+    ModelMetadataResponse:
+      type: object
+      properties:
+        model_spec:
+          type: object
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+        metadata:
+          type: object
+          additionalProperties: true

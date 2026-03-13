@@ -1,0 +1,57 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "tf": "https://www.tensorflow.org/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Model": {
+      "@id": "tf:Model",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "version": "schema:version",
+        "format": "tf:modelFormat",
+        "framework": "tf:framework",
+        "task": "tf:task",
+        "publishedAt": {
+          "@id": "dcterms:issued",
+          "@type": "xsd:dateTime"
+        },
+        "downloadUrl": {
+          "@id": "schema:downloadUrl",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "PredictRequest": {
+      "@id": "tf:PredictRequest",
+      "@context": {
+        "signatureName": "tf:signatureName",
+        "instances": "tf:instances",
+        "inputs": "tf:inputs"
+      }
+    },
+
+    "PredictResponse": {
+      "@id": "tf:PredictResponse",
+      "@context": {
+        "predictions": "tf:predictions",
+        "outputs": "tf:outputs",
+        "modelSpec": "tf:modelSpec"
+      }
+    },
+
+    "ServingSignature": {
+      "@id": "tf:ServingSignature",
+      "@context": {
+        "signatureName": "tf:signatureName",
+        "methodName": "tf:methodName",
+        "inputs": "tf:signatureInputs",
+        "outputs": "tf:signatureOutputs"
+      }
+    }
+  }
+}
