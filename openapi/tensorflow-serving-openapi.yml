@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: TensorFlow Serving REST API
+  title: Google TensorFlow TensorFlow Serving REST API
   description: >-
     TensorFlow Serving exposes a REST API for running inference on trained
     TensorFlow models. It supports predict, classify, and regress endpoints
@@ -27,7 +27,7 @@ paths:
   /v1/models/{model_name}:
     get:
       operationId: getModelStatus
-      summary: Get model status
+      summary: Google TensorFlow Get model status
       description: Returns the status of a model including available versions.
       tags:
         - Model Status
@@ -45,7 +45,7 @@ paths:
   /v1/models/{model_name}/metadata:
     get:
       operationId: getModelMetadata
-      summary: Get model metadata
+      summary: Google TensorFlow Get model metadata
       description: >-
         Returns metadata for a model including signature definitions that
         describe the model's inputs and outputs.
@@ -63,7 +63,7 @@ paths:
   /v1/models/{model_name}:predict:
     post:
       operationId: predict
-      summary: Predict
+      summary: Google TensorFlow Predict
       description: >-
         Runs prediction (inference) on a model. Accepts input tensors and
         returns output tensors from the model's serving signature.
@@ -91,7 +91,7 @@ paths:
   /v1/models/{model_name}:classify:
     post:
       operationId: classify
-      summary: Classify
+      summary: Google TensorFlow Classify
       description: >-
         Runs classification on a model. Returns class labels and scores
         for the given input examples.
@@ -115,7 +115,7 @@ paths:
   /v1/models/{model_name}:regress:
     post:
       operationId: regress
-      summary: Regress
+      summary: Google TensorFlow Regress
       description: >-
         Runs regression on a model. Returns regression values for the
         given input examples.
