@@ -19,10 +19,10 @@ servers:
   - url: http://localhost:8501
     description: Default TensorFlow Serving REST endpoint
 tags:
-  - name: Prediction
-    description: Model inference operations
   - name: Model Status
     description: Model metadata and status operations
+  - name: Prediction
+    description: Model inference operations
 paths:
   /v1/models/{model_name}:
     get:
