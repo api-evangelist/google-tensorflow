@@ -1,0 +1,185 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google TensorFlow TensorFlow Serving REST API
+  description: TensorFlow Serving exposes a REST API for running inference on trained TensorFlow models. It supports predict,
+    classify, and regress endpoints with model versioning and lifecycle management.
+  tags:
+  - Google
+  - Tensorflow
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: google-tensorflow
+    baseUri: http://localhost:8501
+    description: Google TensorFlow TensorFlow Serving REST API HTTP API.
+    resources:
+    - name: v1-models-model-name
+      path: /v1/models/{model_name}
+      operations:
+      - name: getmodelstatus
+        method: GET
+        description: Google TensorFlow Get model status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-models-model-name-metadata
+      path: /v1/models/{model_name}/metadata
+      operations:
+      - name: getmodelmetadata
+        method: GET
+        description: Google TensorFlow Get model metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-models-model-name-predict
+      path: /v1/models/{model_name}:predict
+      operations:
+      - name: predict
+        method: POST
+        description: Google TensorFlow Predict
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-models-model-name-classify
+      path: /v1/models/{model_name}:classify
+      operations:
+      - name: classify
+        method: POST
+        description: Google TensorFlow Classify
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-models-model-name-regress
+      path: /v1/models/{model_name}:regress
+      operations:
+      - name: regress
+        method: POST
+        description: Google TensorFlow Regress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: google-tensorflow-rest
+    description: REST adapter for Google TensorFlow TensorFlow Serving REST API.
+    resources:
+    - path: /v1/models/{model_name}
+      name: getmodelstatus
+      operations:
+      - method: GET
+        name: getmodelstatus
+        description: Google TensorFlow Get model status
+        call: google-tensorflow.getmodelstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/{model_name}/metadata
+      name: getmodelmetadata
+      operations:
+      - method: GET
+        name: getmodelmetadata
+        description: Google TensorFlow Get model metadata
+        call: google-tensorflow.getmodelmetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/{model_name}:predict
+      name: predict
+      operations:
+      - method: POST
+        name: predict
+        description: Google TensorFlow Predict
+        call: google-tensorflow.predict
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/{model_name}:classify
+      name: classify
+      operations:
+      - method: POST
+        name: classify
+        description: Google TensorFlow Classify
+        call: google-tensorflow.classify
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/{model_name}:regress
+      name: regress
+      operations:
+      - method: POST
+        name: regress
+        description: Google TensorFlow Regress
+        call: google-tensorflow.regress
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: google-tensorflow-mcp
+    transport: http
+    description: MCP adapter for Google TensorFlow TensorFlow Serving REST API for AI agent use.
+    tools:
+    - name: getmodelstatus
+      description: Google TensorFlow Get model status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-tensorflow.getmodelstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmodelmetadata
+      description: Google TensorFlow Get model metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-tensorflow.getmodelmetadata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: predict
+      description: Google TensorFlow Predict
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-tensorflow.predict
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: classify
+      description: Google TensorFlow Classify
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-tensorflow.classify
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: regress
+      description: Google TensorFlow Regress
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-tensorflow.regress
+      outputParameters:
+      - type: object
+        mapping: $.
