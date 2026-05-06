@@ -4,97 +4,47 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google TensorFlow
 providerId: google-tensorflow
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - AI
-  - Deep Learning
-  - Google
-  - Machine Learning
-  - Model Serving
-  - Open Source
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Google TensorFlow API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - AI
+  - Machine Learning
+  - Open Source
+description: TensorFlow is open-source software with no centrally enforced rate limits. TensorFlow Serving
+  runs inside the consumer's own infrastructure, so request throughput is governed by the deployer's
+  hardware (CPU/GPU/TPU), TensorFlow Serving server flags (max batch size, num_concurrent_requests),
+  and any front-door API gateway. TensorFlow Hub / Kaggle Models is a free public mirror with fair-use
+  download limits set by the host platform.
+sources:
+  - https://www.tensorflow.org/tfx/serving/api_rest
+  - https://github.com/tensorflow/serving
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - TensorFlow Serving REST API
-      - TensorFlow Hub API
-      - TensorFlow Model Analysis API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - TensorFlow Serving REST API
-      - TensorFlow Hub API
-      - TensorFlow Model Analysis API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - TensorFlow Serving REST API
-      - TensorFlow Hub API
-      - TensorFlow Model Analysis API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - TensorFlow Serving REST API
-      - TensorFlow Hub API
-      - TensorFlow Model Analysis API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - TensorFlow Serving REST API
-      - TensorFlow Hub API
-      - TensorFlow Model Analysis API
+  - name: TensorFlow Serving — operator-defined
+    scope: deployment
+    metric: varies
+    limit: 'self-hosted; governed by serving binary flags and underlying hardware'
+    notes: Throughput depends on `--max_num_load_retries`, `--num_load_threads`, batching parameters,
+      and GPU/TPU availability in the deployer's environment.
+  - name: TensorFlow Hub / Kaggle Models downloads
+    scope: IP
+    metric: varies
+    limit: 'fair-use download policy enforced by the model host'
+    notes: No documented numeric quota; very high concurrent download volume may be throttled.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Self-managed throttling
+    description: Because TensorFlow Serving is self-hosted, deployers should put their own rate-limit
+      / quota / circuit-breaker layer (e.g. an API gateway or service mesh) in front of the inference
+      endpoint.
+  - name: Batching for throughput
+    description: Use TensorFlow Serving batching configuration (max_batch_size, batch_timeout_micros)
+      to amortize request overhead and raise effective requests-per-second.
+  - name: Open-source community support
+    description: Performance / scaling issues are addressed through GitHub issues and the TensorFlow
+      Forum; there is no vendor SLA or paid support tier from the TensorFlow project.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
