@@ -78,9 +78,9 @@ common:
     url: https://www.tensorflow.org/install
   - type: Support
     url: https://www.tensorflow.org/community
-  - type: Status
+  - type: StatusPage
     url: https://github.com/tensorflow/tensorflow
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/google-tensorflow-context.jsonld
 maintainers:
   - FN: Kin Lane
