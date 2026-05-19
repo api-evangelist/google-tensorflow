@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google TensorFlow TensorFlow Serving REST API — Prediction
+  description: 'Google TensorFlow TensorFlow Serving REST API — Prediction. 3 operations. Lead operation: Google TensorFlow
+    Classify. Self-contained Naftiko capability covering one Google Tensorflow business surface.'
+  tags:
+  - Google Tensorflow
+  - Prediction
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_TENSORFLOW_API_KEY: GOOGLE_TENSORFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tensorflow-serving-prediction
+    baseUri: http://localhost:8501
+    description: Google TensorFlow TensorFlow Serving REST API — Prediction business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: v1-models-model_name}:classify
+      path: /v1/models/{model_name}:classify
+      operations:
+      - name: classify
+        method: POST
+        description: Google TensorFlow Classify
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-models-model_name}:predict
+      path: /v1/models/{model_name}:predict
+      operations:
+      - name: predict
+        method: POST
+        description: Google TensorFlow Predict
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-models-model_name}:regress
+      path: /v1/models/{model_name}:regress
+      operations:
+      - name: regress
+        method: POST
+        description: Google TensorFlow Regress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: tensorflow-serving-prediction-rest
+    port: 8080
+    description: REST adapter for Google TensorFlow TensorFlow Serving REST API — Prediction. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/models/model-name-classify
+      name: v1-models-model-name-classify
+      description: REST surface for v1-models-model_name}:classify.
+      operations:
+      - method: POST
+        name: classify
+        description: Google TensorFlow Classify
+        call: tensorflow-serving-prediction.classify
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/models/model-name-predict
+      name: v1-models-model-name-predict
+      description: REST surface for v1-models-model_name}:predict.
+      operations:
+      - method: POST
+        name: predict
+        description: Google TensorFlow Predict
+        call: tensorflow-serving-prediction.predict
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/models/model-name-regress
+      name: v1-models-model-name-regress
+      description: REST surface for v1-models-model_name}:regress.
+      operations:
+      - method: POST
+        name: regress
+        description: Google TensorFlow Regress
+        call: tensorflow-serving-prediction.regress
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tensorflow-serving-prediction-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google TensorFlow TensorFlow Serving REST API — Prediction. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: google-tensorflow-classify
+      description: Google TensorFlow Classify
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tensorflow-serving-prediction.classify
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-tensorflow-predict
+      description: Google TensorFlow Predict
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tensorflow-serving-prediction.predict
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-tensorflow-regress
+      description: Google TensorFlow Regress
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tensorflow-serving-prediction.regress
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,100 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google TensorFlow TensorFlow Serving REST API — Model Status
+  description: 'Google TensorFlow TensorFlow Serving REST API — Model Status. 2 operations. Lead operation: Google TensorFlow
+    Get model status. Self-contained Naftiko capability covering one Google Tensorflow business surface.'
+  tags:
+  - Google Tensorflow
+  - Model Status
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_TENSORFLOW_API_KEY: GOOGLE_TENSORFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tensorflow-serving-model-status
+    baseUri: http://localhost:8501
+    description: Google TensorFlow TensorFlow Serving REST API — Model Status business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: v1-models-model_name
+      path: /v1/models/{model_name}
+      operations:
+      - name: getmodelstatus
+        method: GET
+        description: Google TensorFlow Get model status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-models-model_name-metadata
+      path: /v1/models/{model_name}/metadata
+      operations:
+      - name: getmodelmetadata
+        method: GET
+        description: Google TensorFlow Get model metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: tensorflow-serving-model-status-rest
+    port: 8080
+    description: REST adapter for Google TensorFlow TensorFlow Serving REST API — Model Status. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/models/{model-name}
+      name: v1-models-model-name
+      description: REST surface for v1-models-model_name.
+      operations:
+      - method: GET
+        name: getmodelstatus
+        description: Google TensorFlow Get model status
+        call: tensorflow-serving-model-status.getmodelstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/models/{model-name}/metadata
+      name: v1-models-model-name-metadata
+      description: REST surface for v1-models-model_name-metadata.
+      operations:
+      - method: GET
+        name: getmodelmetadata
+        description: Google TensorFlow Get model metadata
+        call: tensorflow-serving-model-status.getmodelmetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tensorflow-serving-model-status-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google TensorFlow TensorFlow Serving REST API — Model Status. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: google-tensorflow-get-model-status
+      description: Google TensorFlow Get model status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tensorflow-serving-model-status.getmodelstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-tensorflow-get-model-metadata
+      description: Google TensorFlow Get model metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tensorflow-serving-model-status.getmodelmetadata
+      outputParameters:
+      - type: object
+        mapping: $.
