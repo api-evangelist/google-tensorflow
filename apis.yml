@@ -4,7 +4,7 @@ description: >-
   Google TensorFlow is an open-source machine learning framework providing APIs and tools for building, training, and
   deploying ML models, including TensorFlow Serving for model inference and TensorFlow Hub for reusable model
   components.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-tensorflow/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -24,7 +24,7 @@ apis:
       supports model prediction (inference), classification, and regression requests against deployed models. It allows
       specifying model names and versions, and returns predictions in JSON format. TensorFlow Serving handles model
       lifecycle management, versioning, and concurrent request processing.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.tensorflow.org/tfx/serving/api_rest
     baseURL: http://localhost:8501
     tags:
@@ -43,7 +43,7 @@ apis:
       TensorFlow Hub provides a repository of reusable trained machine learning models. The API allows developers to
       search, discover, and download pre-trained models and model components (SavedModels, TF.js models, TFLite models)
       that can be reused for transfer learning and inference in new applications.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://tfhub.dev
     baseURL: https://tfhub.dev
     tags:
@@ -58,7 +58,7 @@ apis:
       TensorFlow Model Analysis (TFMA) provides tools and APIs for evaluating TensorFlow models. It enables computing
       metrics over large datasets using Apache Beam, slicing evaluation results across different features, and tracking
       model performance over time for validation and monitoring purposes.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.tensorflow.org/tfx/model_analysis/get_started
     baseURL: https://localhost
     tags:
