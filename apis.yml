@@ -69,6 +69,8 @@ apis:
       - type: Documentation
         url: https://www.tensorflow.org/tfx/model_analysis/get_started
 common:
+  - type: DomainSecurity
+    url: security/google-tensorflow-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/showcase/tensorflowdev
   - type: GettingStarted
@@ -83,6 +85,8 @@ common:
     url: https://github.com/tensorflow/tensorflow
   - type: JSONLD
     url: json-ld/google-tensorflow-context.jsonld
+  - url: https://blog.tensorflow.org/feeds/posts/default?alt=rss
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
