@@ -1,0 +1,8 @@
+---
+title: "TensorFlow 2.15 update: hot-fix for Linux installation issue"
+url: "https://blog.tensorflow.org/2023/12/tensorflow-215-update-hot-fix-linux-installation-issue.html"
+date: "2023-12-05"
+author: "noreply@blogger.com (TensorFlow Blog)"
+feed_url: "https://blog.tensorflow.org/feeds/posts/default?alt=rss"
+---
+Posted by the TensorFlow team We are releasing a hot-fix for an installation issue affecting the TensorFlow installation process. The TensorFlow 2.15.0 Python package was released such that it requested tensorrt -related packages that cannot be found unless the user installs them beforehand or provides additional installation flags.
