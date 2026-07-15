@@ -69,6 +69,8 @@ apis:
       - type: Documentation
         url: https://www.tensorflow.org/tfx/model_analysis/get_started
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-tensorflow-agentic-access.yml
   - type: DomainSecurity
     url: security/google-tensorflow-domain-security.yml
   - type: LinkedIn
