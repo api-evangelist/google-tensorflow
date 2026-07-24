@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: Google TensorFlow TensorFlow Serving REST Model Status API
+  description: TensorFlow Serving exposes a REST API for running inference on trained TensorFlow models. It supports predict, classify, and regress endpoints with model versioning and lifecycle management.
+  version: '1'
+  contact:
+    name: TensorFlow Community
+    url: https://www.tensorflow.org/community
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8501
+  description: Default TensorFlow Serving REST endpoint
+tags:
+- name: Model Status
+  description: Model metadata and status operations
+paths:
+  /v1/models/{model_name}:
+    get:
+      operationId: getModelStatus
+      summary: Google TensorFlow Get model status
+      description: Returns the status of a model including available versions.
+      tags:
+      - Model Status
+      parameters:
+      - $ref: '#/components/parameters/model_name'
+      responses:
+        '200':
+          description: Model status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelStatusResponse'
+        '404':
+          description: Model not found
+  /v1/models/{model_name}/metadata:
+    get:
+      operationId: getModelMetadata
+      summary: Google TensorFlow Get model metadata
+      description: Returns metadata for a model including signature definitions that describe the model's inputs and outputs.
+      tags:
+      - Model Status
+      parameters:
+      - $ref: '#/components/parameters/model_name'
+      responses:
+        '200':
+          description: Model metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelMetadataResponse'
+components:
+  schemas:
+    ModelStatusResponse:
+      type: object
+      properties:
+        model_version_status:
+          type: array
+          items:
+            type: object
+            properties:
+              version:
+                type: string
+              state:
+                type: string
+                enum:
+                - START
+                - LOADING
+                - AVAILABLE
+                - UNLOADING
+                - END
+              status:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+    ModelMetadataResponse:
+      type: object
+      properties:
+        model_spec:
+          type: object
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+        metadata:
+          type: object
+          additionalProperties: true
+  parameters:
+    model_name:
+      name: model_name
+      in: path
+      required: true
+      description: The name of the model
+      schema:
+        type: string
+externalDocs:
+  description: TensorFlow Serving REST API Documentation
+  url: https://www.tensorflow.org/tfx/serving/api_rest
