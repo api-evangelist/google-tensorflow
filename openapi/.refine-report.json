@@ -1,0 +1,16 @@
+{
+  "provider": "google-tensorflow",
+  "sources": [
+    "google-tensorflow-model-status-api-openapi.yml",
+    "google-tensorflow-prediction-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-tensorflow-model-status-api-openapi.yml",
+    "google-tensorflow-prediction-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
