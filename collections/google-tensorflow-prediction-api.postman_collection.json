@@ -1,0 +1,405 @@
+{
+  "item": [
+    {
+      "id": "b709450f-e938-4d4c-915e-8505d53f49fe",
+      "name": "Prediction",
+      "description": {
+        "content": "Model inference operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "527ca3cd-9e3b-4c9c-960f-5f8dec477f5f",
+          "name": "Google TensorFlow Predict",
+          "request": {
+            "name": "Google TensorFlow Predict",
+            "description": {
+              "content": "Runs prediction (inference) on a model. Accepts input tensors and returns output tensors from the model's serving signature.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "models",
+                "{{model_name}}:predict"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"signature_name\": \"<string>\",\n  \"inputs\": {\n    \"key_0\": true\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed770074-25fa-4ba5-aa48-241ca77fcfc2",
+              "name": "Prediction results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    "{{model_name}}:predict"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature_name\": \"<string>\",\n  \"inputs\": {\n    \"key_0\": 9190\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outputs\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9a6e35e-7781-4608-8da4-7c4416612cce",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    "{{model_name}}:predict"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature_name\": \"<string>\",\n  \"inputs\": {\n    \"key_0\": 9190\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a86fcf6-af92-46db-a13a-0ad86fa2e55e",
+              "name": "Model not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    "{{model_name}}:predict"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature_name\": \"<string>\",\n  \"inputs\": {\n    \"key_0\": 9190\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4444c9aa-52a4-4479-bf75-ccfbdcf1961b",
+          "name": "Google TensorFlow Classify",
+          "request": {
+            "name": "Google TensorFlow Classify",
+            "description": {
+              "content": "Runs classification on a model. Returns class labels and scores for the given input examples.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "models",
+                "{{model_name}}:classify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"signature_name\": \"<string>\",\n  \"context\": {\n    \"key_0\": false,\n    \"key_1\": 1022.1550633891874\n  },\n  \"examples\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": true\n    },\n    {\n      \"key_0\": 8148.519015594038,\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9c928bf1-6f0c-4690-98ae-e734c9dd2986",
+              "name": "Classification results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    "{{model_name}}:classify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature_name\": \"<string>\",\n  \"context\": {\n    \"key_0\": true,\n    \"key_1\": 2603.8689659908955,\n    \"key_2\": 7176\n  },\n  \"examples\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 4819,\n      \"key_1\": 2331\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"classes\": [\n        {\n          \"label\": \"string\",\n          \"score\": 3242.3452628711902\n        },\n        {\n          \"label\": \"string\",\n          \"score\": 4200.768480744707\n        }\n      ]\n    },\n    {\n      \"classes\": [\n        {\n          \"label\": \"string\",\n          \"score\": 1528.3372006779139\n        },\n        {\n          \"label\": \"string\",\n          \"score\": 6525.787417368104\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdc84ef2-c060-4324-9991-6996e86b83a4",
+          "name": "Google TensorFlow Regress",
+          "request": {
+            "name": "Google TensorFlow Regress",
+            "description": {
+              "content": "Runs regression on a model. Returns regression values for the given input examples.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "models",
+                "{{model_name}}:regress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"signature_name\": \"<string>\",\n  \"context\": {\n    \"key_0\": false,\n    \"key_1\": 1022.1550633891874\n  },\n  \"examples\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": true\n    },\n    {\n      \"key_0\": 8148.519015594038,\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "179f9ce8-356c-416b-8514-2d2e210edc05",
+              "name": "Regression results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    "{{model_name}}:regress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature_name\": \"<string>\",\n  \"context\": {\n    \"key_0\": true,\n    \"key_1\": 2603.8689659908955,\n    \"key_2\": 7176\n  },\n  \"examples\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 4819,\n      \"key_1\": 2331\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"value\": 7704.652077316559\n    },\n    {\n      \"value\": 4210.50694386087\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8501",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The name of the model",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "model_name"
+    }
+  ],
+  "info": {
+    "_postman_id": "1f3d1f42-50e2-41b4-8710-d004c77a717a",
+    "name": "Google TensorFlow TensorFlow Serving REST Model Status Prediction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TensorFlow Serving exposes a REST API for running inference on trained TensorFlow models. It supports predict, classify, and regress endpoints with model versioning and lifecycle management.\n\nContact Support:\n Name: TensorFlow Community",
+      "type": "text/plain"
+    }
+  }
+}

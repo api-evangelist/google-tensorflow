@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google TensorFlow TensorFlow Serving REST Model Status Prediction API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Prediction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google TensorFlow Predict",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8501/v1/models/:model_name:predict",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the model"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs prediction (inference) on a model. Accepts input tensors and returns output tensors from the model's serving signature."
+        },
+        {
+          "info": {
+            "name": "Google TensorFlow Classify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8501/v1/models/:model_name:classify",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the model"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs classification on a model. Returns class labels and scores for the given input examples."
+        },
+        {
+          "info": {
+            "name": "Google TensorFlow Regress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8501/v1/models/:model_name:regress",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the model"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs regression on a model. Returns regression values for the given input examples."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

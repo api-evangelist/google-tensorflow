@@ -1,0 +1,253 @@
+{
+  "item": [
+    {
+      "id": "d3b27ae6-311d-40fe-980c-e6075154ae54",
+      "name": "Model Status",
+      "description": {
+        "content": "Model metadata and status operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dbe30ddb-7a6c-48ef-9e6d-d3ec877aa486",
+          "name": "Google TensorFlow Get model status",
+          "request": {
+            "name": "Google TensorFlow Get model status",
+            "description": {
+              "content": "Returns the status of a model including available versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "models",
+                ":model_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "model_name",
+                  "description": "(Required) The name of the model"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab86b230-6a86-4687-a761-5bb7f3bf18e1",
+              "name": "Model status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    ":model_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) The name of the model"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"model_version_status\": [\n    {\n      \"version\": \"string\",\n      \"state\": \"START\",\n      \"status\": {\n        \"error_code\": \"string\",\n        \"error_message\": \"string\"\n      }\n    },\n    {\n      \"version\": \"string\",\n      \"state\": \"UNLOADING\",\n      \"status\": {\n        \"error_code\": \"string\",\n        \"error_message\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff3a5b9a-2ae6-484c-9630-5d766b8efb21",
+              "name": "Model not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    ":model_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) The name of the model"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "161b2bac-ede5-4c03-abcd-0c529be4d56b",
+          "name": "Google TensorFlow Get model metadata",
+          "request": {
+            "name": "Google TensorFlow Get model metadata",
+            "description": {
+              "content": "Returns metadata for a model including signature definitions that describe the model's inputs and outputs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "models",
+                ":model_name",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "model_name",
+                  "description": "(Required) The name of the model"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8d296da-f5d3-4e02-8e0a-89c6bb0104b1",
+              "name": "Model metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    ":model_name",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) The name of the model"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"model_spec\": {\n    \"name\": \"string\",\n    \"version\": \"string\"\n  },\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8501",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ce6e163-f9c5-46ef-beec-3be5edf99ae0",
+    "name": "Google TensorFlow TensorFlow Serving REST Model Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TensorFlow Serving exposes a REST API for running inference on trained TensorFlow models. It supports predict, classify, and regress endpoints with model versioning and lifecycle management.\n\nContact Support:\n Name: TensorFlow Community",
+      "type": "text/plain"
+    }
+  }
+}

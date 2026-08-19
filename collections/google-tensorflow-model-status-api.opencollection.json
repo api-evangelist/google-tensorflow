@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google TensorFlow TensorFlow Serving REST Model Status API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Model Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google TensorFlow Get model status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8501/v1/models/:model_name",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the model"
+              }
+            ]
+          },
+          "docs": "Returns the status of a model including available versions."
+        },
+        {
+          "info": {
+            "name": "Google TensorFlow Get model metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8501/v1/models/:model_name/metadata",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the model"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a model including signature definitions that describe the model's inputs and outputs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
