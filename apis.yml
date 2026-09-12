@@ -108,6 +108,8 @@ apis:
   - type: JSONSchema
     url: json-schema/google-tensorflow-predict-request-schema.json
 common:
+  - type: Website
+    url: https://www.tensorflow.org/
   - type: AgenticAccess
     url: agentic-access/google-tensorflow-agentic-access.yml
   - type: DomainSecurity
