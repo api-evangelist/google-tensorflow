@@ -99,6 +99,8 @@ apis:
   humanURL: https://www.tensorflow.org/tfx/serving/api_rest
   baseURL: http://localhost:8501
   tags:
+  - Predictions
+  tags_raw:
   - Prediction
   properties:
   - type: OpenAPI
