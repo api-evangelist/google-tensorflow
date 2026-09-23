@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google TensorFlow TensorFlow Serving REST Model Status API
   description: TensorFlow Serving exposes a REST API for running inference on trained TensorFlow models. It supports predict, classify, and regress endpoints with model versioning and lifecycle management.
@@ -52,6 +52,19 @@ paths:
                 $ref: '#/components/schemas/ModelMetadataResponse'
 components:
   schemas:
+    ModelMetadataResponse:
+      type: object
+      properties:
+        model_spec:
+          type: object
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+        metadata:
+          type: object
+          additionalProperties: true
     ModelStatusResponse:
       type: object
       properties:
@@ -77,19 +90,6 @@ components:
                     type: string
                   error_message:
                     type: string
-    ModelMetadataResponse:
-      type: object
-      properties:
-        model_spec:
-          type: object
-          properties:
-            name:
-              type: string
-            version:
-              type: string
-        metadata:
-          type: object
-          additionalProperties: true
   parameters:
     model_name:
       name: model_name
