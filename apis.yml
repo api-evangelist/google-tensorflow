@@ -38,9 +38,9 @@ tags:
   - Artificial Intelligence
   - Deep Learning
   - Google
-  - Machine-Learning
+  - Machine Learning
   - Model Serving
-  - Open-Source
+  - Open Source
 tags_raw:
   - AI
   - Deep Learning
@@ -48,6 +48,8 @@ tags_raw:
   - Machine Learning
   - Model Serving
   - Open Source
+  - Machine-Learning
+  - Open-Source
 apis:
 - name: TensorFlow Hub API
   description: >-

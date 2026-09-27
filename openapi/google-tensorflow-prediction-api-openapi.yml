@@ -98,28 +98,6 @@ components:
             properties:
               value:
                 type: number
-    PredictResponse:
-      type: object
-      properties:
-        predictions:
-          type: array
-          description: Output predictions in row format
-          items: {}
-        outputs:
-          description: Output tensors in columnar format
-    ClassifyRequest:
-      type: object
-      properties:
-        signature_name:
-          type: string
-        context:
-          type: object
-          additionalProperties: true
-        examples:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
     ClassifyResponse:
       type: object
       properties:
@@ -137,6 +115,32 @@ components:
                       type: string
                     score:
                       type: number
+    RegressRequest:
+      type: object
+      properties:
+        signature_name:
+          type: string
+        context:
+          type: object
+          additionalProperties: true
+        examples:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    ClassifyRequest:
+      type: object
+      properties:
+        signature_name:
+          type: string
+        context:
+          type: object
+          additionalProperties: true
+        examples:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
     PredictRequest:
       type: object
       properties:
@@ -154,19 +158,15 @@ components:
             additionalProperties: true
           - type: array
             items: {}
-    RegressRequest:
+    PredictResponse:
       type: object
       properties:
-        signature_name:
-          type: string
-        context:
-          type: object
-          additionalProperties: true
-        examples:
+        predictions:
           type: array
-          items:
-            type: object
-            additionalProperties: true
+          description: Output predictions in row format
+          items: {}
+        outputs:
+          description: Output tensors in columnar format
   parameters:
     model_name:
       name: model_name
