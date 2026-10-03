@@ -87,60 +87,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/RegressResponse'
 components:
+  parameters:
+    model_name:
+      name: model_name
+      in: path
+      required: true
+      description: The name of the model
+      schema:
+        type: string
   schemas:
-    RegressResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: number
-    ClassifyResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              classes:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    label:
-                      type: string
-                    score:
-                      type: number
-    RegressRequest:
-      type: object
-      properties:
-        signature_name:
-          type: string
-        context:
-          type: object
-          additionalProperties: true
-        examples:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-    ClassifyRequest:
-      type: object
-      properties:
-        signature_name:
-          type: string
-        context:
-          type: object
-          additionalProperties: true
-        examples:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
     PredictRequest:
       type: object
       properties:
@@ -158,6 +113,33 @@ components:
             additionalProperties: true
           - type: array
             items: {}
+    ClassifyResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              classes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    label:
+                      type: string
+                    score:
+                      type: number
+    RegressResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: number
     PredictResponse:
       type: object
       properties:
@@ -167,14 +149,32 @@ components:
           items: {}
         outputs:
           description: Output tensors in columnar format
-  parameters:
-    model_name:
-      name: model_name
-      in: path
-      required: true
-      description: The name of the model
-      schema:
-        type: string
+    ClassifyRequest:
+      type: object
+      properties:
+        signature_name:
+          type: string
+        context:
+          type: object
+          additionalProperties: true
+        examples:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    RegressRequest:
+      type: object
+      properties:
+        signature_name:
+          type: string
+        context:
+          type: object
+          additionalProperties: true
+        examples:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
 externalDocs:
   description: TensorFlow Serving REST API Documentation
   url: https://www.tensorflow.org/tfx/serving/api_rest
