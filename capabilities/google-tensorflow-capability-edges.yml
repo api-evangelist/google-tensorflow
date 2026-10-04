@@ -1,0 +1,34 @@
+slug: google-tensorflow
+provider: Google TensorFlow
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Model Status
+  spec_file: google-tensorflow-model-status-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: '"Get model status", "Get model metadata"; "model versioning and lifecycle management"'
+  reason: Status and metadata of served ML models supports AI/ML model lifecycle and MLOps operations,
+    which is Artificial Intelligence Management.
+- tag: Prediction
+  spec_file: google-tensorflow-prediction-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: POST /v1/models/{model_name}:predict, :classify, :regress — "running inference on trained
+    TensorFlow models"
+  reason: Serving inference from trained ML models is part of the AI/ML model lifecycle and MLOps capability
+    under Information & Data Management.

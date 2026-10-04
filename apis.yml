@@ -112,6 +112,9 @@ apis:
   - type: JSONSchema
     url: json-schema/google-tensorflow-predict-request-schema.json
 common:
+  - type: CapabilityMap
+    url: capabilities/google-tensorflow-capability-edges.yml
+    name: Google TensorFlow Business Capability Map
   - type: Website
     url: https://www.tensorflow.org/
   - type: AgenticAccess
