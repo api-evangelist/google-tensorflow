@@ -112,6 +112,12 @@ apis:
   - type: JSONSchema
     url: json-schema/google-tensorflow-predict-request-schema.json
 common:
+  - type: Plans
+    url: plans/google-tensorflow-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/google-tensorflow-rate-limits.yml
+  - type: FinOps
+    url: finops/google-tensorflow-finops.yml
   - type: CapabilityMap
     url: capabilities/google-tensorflow-capability-edges.yml
     name: Google TensorFlow Business Capability Map
