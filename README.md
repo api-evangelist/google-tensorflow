@@ -1,4 +1,4 @@
-# Google TensorFlow (google-tensorflow)
+# Google TensorFlow
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,98 +66,139 @@
 
 Google TensorFlow is an open-source machine learning framework providing APIs and tools for building, training, and deploying ML models, including TensorFlow Serving for model inference and TensorFlow Hub for reusable model components.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/google-tensorflow/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/google-tensorflow/refs/heads/main/apis.yml)
+**Areas:** Artificial Intelligence · Deep Learning · Google · Machine Learning · Model Serving · Open Source
 
-## Scope
+## Google TensorFlow on APIs.io
 
-- **Type:** Index
+Everything profiled for Google TensorFlow is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/google-tensorflow/](https://apis.io/providers/google-tensorflow/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- AI
-- Deep Learning
-- Google
-- Machine Learning
-- Model Serving
-- Open Source
+- [TensorFlow Hub API](https://apis.io/apis/google-tensorflow/tensorflow-hub-api/) — TensorFlow Hub provides a repository of reusable trained machine learning models. The API allows developers to search, discover, and download pre-trained…
+- [TensorFlow Model Analysis API](https://apis.io/apis/google-tensorflow/tensorflow-model-analysis-api/) — TensorFlow Model Analysis (TFMA) provides tools and APIs for evaluating TensorFlow models. It enables computing metrics over large datasets using Apache…
+- [Google TensorFlow Model Status API](https://apis.io/apis/google-tensorflow/google-tensorflow-model-status-api/) — Model metadata and status operations
+- [Google TensorFlow Prediction API](https://apis.io/apis/google-tensorflow/google-tensorflow-prediction-api/) — Model inference operations
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-13
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### TensorFlow Serving REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-TensorFlow Serving provides a REST API for serving trained TensorFlow models in production environments. The API supports model prediction (inference), classification, and regression requests against deployed models. It allows specifying model names and versions, and returns predictions in JSON format. TensorFlow Serving handles model lifecycle management, versioning, and concurrent request processing.
+- [Google Tensorflow Agentic Access](https://apis.io/agentic-access/google-tensorflow/google-tensorflow-agentic-access/)
 
-- **Human URL:** [https://www.tensorflow.org/tfx/serving/api_rest](https://www.tensorflow.org/tfx/serving/api_rest)
-- **Base URL:** `http://localhost:8501`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Inference
-- Model Serving
-- Predictions
+- [TensorFlow Serving Predict Request](https://apis.io/schemas/google-tensorflow/google-tensorflow-predict-request/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://www.tensorflow.org/tfx/serving/api_rest)
-- [OpenAPI](openapi/tensorflow-serving-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tensorflow-serving.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tensorflow-serving.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/google-tensorflow-predict-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
+Linked-data contexts for the provider's vocabulary.
 
-### TensorFlow Hub API
+- [Google Tensorflow Context](https://apis.io/jsonld/google-tensorflow/google-tensorflow-context/)
 
-TensorFlow Hub provides a repository of reusable trained machine learning models. The API allows developers to search, discover, and download pre-trained models and model components (SavedModels, TF.js models, TFLite models) that can be reused for transfer learning and inference in new applications.
+#### Collections (3)
 
-- **Human URL:** [https://tfhub.dev](https://tfhub.dev)
-- **Base URL:** `https://tfhub.dev`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Google TensorFlow TensorFlow Serving REST Model Status API](https://apis.io/collections/google-tensorflow/open-google-tensorflow-model-status-api/)
+- [Google TensorFlow TensorFlow Serving REST Model Status Prediction API](https://apis.io/collections/google-tensorflow/open-google-tensorflow-prediction-api/)
+- [Google TensorFlow TensorFlow Serving REST API](https://apis.io/collections/google-tensorflow/open-tensorflow-serving/)
 
-- Models
-- Pre-Trained Models
-- Transfer Learning
+#### Governance rules (1)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://www.tensorflow.org/hub)
-- [Postman Collection](collections/tensorflow-serving.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tensorflow-serving.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Google TensorFlow — jsonschema rules](https://apis.io/rules/google-tensorflow/google-tensorflow-jsonschema-spectral-rules/)
 
-### TensorFlow Model Analysis API
+#### Security (1)
 
-TensorFlow Model Analysis (TFMA) provides tools and APIs for evaluating TensorFlow models. It enables computing metrics over large datasets using Apache Beam, slicing evaluation results across different features, and tracking model performance over time for validation and monitoring purposes.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://www.tensorflow.org/tfx/model_analysis/get_started](https://www.tensorflow.org/tfx/model_analysis/get_started)
-- **Base URL:** `https://localhost`
+- [Google Tensorflow Domain Security](https://apis.io/security/google-tensorflow/google-tensorflow-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Analysis
-- Metrics
-- Model Evaluation
+Published plans, tiers and prices.
 
-#### Properties
+- [Google Tensorflow Plans Pricing](https://apis.io/plans/google-tensorflow/google-tensorflow-plans-pricing/)
 
-- [Documentation](https://www.tensorflow.org/tfx/model_analysis/get_started)
-- [Postman Collection](collections/tensorflow-serving.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tensorflow-serving.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-## Common Properties
+Published request limits.
 
-- [LinkedIn](https://www.linkedin.com/showcase/tensorflowdev)
-- [Getting Started](https://www.tensorflow.org/learn)
+- [Google Tensorflow Rate Limits](https://apis.io/rate-limits/google-tensorflow/google-tensorflow-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Google Tensorflow Finops](https://apis.io/finops/google-tensorflow/google-tensorflow-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.tensorflow.org/)
+- [Getting started](https://www.tensorflow.org/learn)
 - [Pricing](https://www.tensorflow.org)
-- [S D Ks](https://www.tensorflow.org/install)
 - [Support](https://www.tensorflow.org/community)
-- [Status Page](https://github.com/tensorflow/tensorflow)
-- [JSON-LD](json-ld/google-tensorflow-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Blog](https://blog.tensorflow.org/feeds/posts/default?alt=rss)
+- [Status](https://github.com/tensorflow/tensorflow)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 49.0 |
+| Contract governance | 9.8 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 15.8 |
+
+**Agent readiness 15.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.0** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/google-tensorflow/](https://apis.io/providers/google-tensorflow/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google TensorFlow: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/google-tensorflow/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
